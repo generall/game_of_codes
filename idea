@@ -1,5 +1,6 @@
 Main idea of game:
 
+FOR FUN DEVELOPMENT!
 
 The Universe of game is computed by Server.
 
@@ -13,6 +14,18 @@ SERVER ---> CLIENT (human)
 		--> CLIENT (AI)
 		--> CLIENT (AI)
 		--> CLIENT (AI)
+		--> VIEW (js on the web(!) / bin)
 
 
 Each t milliseconds server send current state of observed universe to all clients.
+
+Client can response with command to Bot wich will be executed by server.
+
+
+STEP 1 of development:
+
+Writing simple rendering and server side
+
+STEP 2:
+
+Chose phisics engine and try to use it.
