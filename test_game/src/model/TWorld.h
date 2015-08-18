@@ -31,6 +31,8 @@ class TWorld
 public:
 	TWorld();
 	virtual ~TWorld();
+
+	virtual void render();
 };
 
 } /* namespace game */

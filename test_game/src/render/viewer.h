@@ -20,8 +20,10 @@ class viewer
 public:
 	viewer();
 	virtual ~viewer();
-	void render();
 	bool init();
+	bool update();
+	bool render_rectangle(double x, double y, double h, double w );
+	bool render_line(double x1, double y1, double x2,  double y2 );
 };
 
 } /* namespace game */

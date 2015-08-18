@@ -21,4 +21,13 @@ TWorld::~TWorld()
 	// TODO Auto-generated destructor stub
 }
 
+void TWorld::render()
+{
+	for(auto x: objects )
+	{
+		x->render(render_engine);
+	}
+	render_engine->update();
+}
+
 } /* namespace game */

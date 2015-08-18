@@ -21,4 +21,10 @@ TObject::~TObject()
 	// TODO Auto-generated destructor stub
 }
 
+void TObject::render(viewer* v)
+{
+
+}
+
 } /* namespace game */
+
