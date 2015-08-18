@@ -1,0 +1,18 @@
+Main idea of game:
+
+
+The Universe of game is computed by Server.
+
+The server connects to each client using open protocol.
+
+
+
+
+SERVER ---> CLIENT (human)
+		...
+		--> CLIENT (AI)
+		--> CLIENT (AI)
+		--> CLIENT (AI)
+
+
+Each t milliseconds server send current state of observed universe to all clients.
