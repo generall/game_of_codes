@@ -29,3 +29,8 @@ Writing simple rendering and server side
 STEP 2:
 
 Chose phisics engine and try to use it.
+
+
+view -- req data from --> model
+
+controller -- rule --> TWorlds

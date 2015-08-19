@@ -17,13 +17,17 @@ namespace game
 /**
  * Rectangle class. Provides representation of rectangle for render & modeling.
  */
+
 class TRectangle: public TShape
 {
 
-public:
 	double x, y, hight, width;
+public:
 	TRectangle();
 	virtual ~TRectangle();
+	virtual point_2d getPoint();
+	virtual void get_params(params &p);
+
 };
 
 } /* namespace game */

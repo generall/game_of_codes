@@ -5,12 +5,11 @@
  *      Author: generall
  */
 
-#ifndef MODEL_TOBJECT_H_
-#define MODEL_TOBJECT_H_
+#ifndef MODEL_OBJECTS_TOBJECT_H_
+#define MODEL_OBJECTS_TOBJECT_H_
 
 #include <vector>
-#include "primitives/TShape.h"
-#include "../render/viewer.h"
+#include "../primitives/TShape.h"
 
 namespace game
 {
@@ -18,12 +17,15 @@ namespace game
 class TObject
 {
 
+protected:
+
 	std::vector<TShape*> shapes;
 
 public:
 	TObject();
 	virtual ~TObject();
-	void render(viewer* v);
+	virtual std::vector<TShape*>& getShapes();
+
 };
 
 } /* namespace game */

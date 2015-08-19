@@ -16,13 +16,23 @@ TRectangle::TRectangle()
 	y = 0;
 	hight = 10; // px
 	width = 10; // px
-	// TODO Auto-generated constructor stub
-
+	type = rectangle;
 }
 
 TRectangle::~TRectangle()
 {
 	// TODO Auto-generated destructor stub
+}
+
+point_2d TRectangle::getPoint()
+{
+	return std::make_pair(x,y);
+}
+
+void TRectangle::get_params(params &p)
+{
+	p.push_back(hight);
+	p.push_back(width);
 }
 
 } /* namespace game */

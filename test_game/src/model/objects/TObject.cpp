@@ -21,10 +21,11 @@ TObject::~TObject()
 	// TODO Auto-generated destructor stub
 }
 
-void TObject::render(viewer* v)
+std::vector<TShape*>& TObject::getShapes()
 {
-
+	return shapes;
 }
+
 
 } /* namespace game */
 

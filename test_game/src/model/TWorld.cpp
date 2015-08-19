@@ -18,16 +18,20 @@ TWorld::TWorld()
 
 TWorld::~TWorld()
 {
-	// TODO Auto-generated destructor stub
+	for(auto x: this->objects)
+	{
+		delete x;
+	}
 }
 
-void TWorld::render()
+std::vector<TObject*>& TWorld::getObjectVector()
 {
-	for(auto x: objects )
-	{
-		x->render(render_engine);
-	}
-	render_engine->update();
+	return objects;
+}
+
+void TWorld::createBox()
+{
+	this->objects.push_back(new TBox());
 }
 
 } /* namespace game */

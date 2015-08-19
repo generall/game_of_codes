@@ -8,8 +8,18 @@
 #ifndef RENDER_VIEWER_H_
 #define RENDER_VIEWER_H_
 
+#include <SFML/Graphics.hpp>
+#include "../model/TWorld.h"
+
+
 namespace game
 {
+
+typedef enum {
+	working,
+	closed,
+	stoped
+} view_state;
 
 /**
  * Base class for rendering the world
@@ -17,13 +27,17 @@ namespace game
 
 class viewer
 {
+
+	TWorld *model;
+
+	 sf::RenderWindow *window;
+
 public:
 	viewer();
 	virtual ~viewer();
-	bool init();
-	bool update();
-	bool render_rectangle(double x, double y, double h, double w );
-	bool render_line(double x1, double y1, double x2,  double y2 );
+	virtual bool init();
+	virtual void setModel(TWorld * _model);
+	virtual view_state update();
 };
 
 } /* namespace game */
