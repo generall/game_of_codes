@@ -35,6 +35,9 @@ protected:
 	TWorld *model;
 
 public:
+
+	bool debug = true;
+
 	viewer();
 	virtual ~viewer();
 	virtual bool init();

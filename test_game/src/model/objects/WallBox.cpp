@@ -23,7 +23,7 @@ WallBox::WallBox(b2World *world)
 
 	rec->setPoint(0.0, -10.0);
 	rec->setHight( hight * 2 );
-	rec->setWidth( width);
+	rec->setWidth( width * 2);
 
 	// TODO Auto-generated constructor stub
 

@@ -33,10 +33,10 @@ void GravityWorld::createUniverse()
 	objects.push_back(new PhBox(&world));
 
 	PhBox *barier1 = new PhBox(&world);
-	barier1->setPosition(-15, 30);
+	barier1->setPosition(-1.5, 10);
 
 	PhBox *barier2 = new PhBox(&world);
-	barier2->setPosition(15, 130);
+	barier2->setPosition(-1, 12);
 
 
 	objects.push_back(barier1);

@@ -36,6 +36,7 @@
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug.2126067132" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug">
 								<option id="gnu.cpp.link.option.libs.701120697" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" value="sfml-graphics"/>
+									<listOptionValue builtIn="false" value="Box2D"/>
 									<listOptionValue builtIn="false" value="sfml-window"/>
 									<listOptionValue builtIn="false" value="sfml-system"/>
 								</option>

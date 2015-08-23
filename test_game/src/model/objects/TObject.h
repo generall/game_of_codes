@@ -12,6 +12,7 @@
 #include "../primitives/TShape.h"
 
 #define RAD_TO_DEG_COEF 57.295780490442965
+#define PI 3.1415926
 
 namespace game
 {

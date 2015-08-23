@@ -14,8 +14,8 @@ PhBox::PhBox(b2World *world)
 {
 	// Define the dynamic body. We set its position and call the body factory.
 
-	float width = 10.0;
-	float hight = 10.0;
+	float width = 1.0;
+	float hight = 1.0;
 
 	bodyDef.type = b2_dynamicBody;
 	bodyDef.position.Set(0.0f, 100 );
@@ -54,7 +54,8 @@ void PhBox::update()
 {
 	rec->setAngle(body->GetAngle() * 57.295780490442965);
 	b2Vec2 position = body->GetPosition();
-	rec->setPoint(position.x, position.y);
+	//b2Vec2 vv = body->GetWorldVector( b2Vec2( 1, 1 ) );
+	rec->setPoint(position.x , position.y);
 }
 
 void PhBox::setPosition(double x, double y)
