@@ -31,7 +31,8 @@ public:
 	virtual ~TWorld();
 	virtual std::vector<TObject*>& getObjectVector();
 
-	virtual void createBox();
+	virtual void createUniverse();
+	virtual void tick();
 };
 
 } /* namespace game */

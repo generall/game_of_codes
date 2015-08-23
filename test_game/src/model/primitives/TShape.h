@@ -40,6 +40,8 @@ public:
 	virtual ~TShape();
 
 	virtual point_2d getPoint();
+	virtual void setPoint(const point_2d&);
+	virtual void setPoint(double x, double y);
 	virtual figure_type getType();
 	// assume that we use move semantic, so vector will not be copied
 	virtual void get_params(params &p);

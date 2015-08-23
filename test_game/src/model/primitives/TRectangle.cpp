@@ -17,6 +17,7 @@ TRectangle::TRectangle()
 	hight = 10; // px
 	width = 10; // px
 	type = rectangle;
+	angle = 0;
 }
 
 TRectangle::~TRectangle()
@@ -27,6 +28,12 @@ TRectangle::~TRectangle()
 point_2d TRectangle::getPoint()
 {
 	return std::make_pair(x,y);
+}
+
+void TRectangle::setPoint(const point_2d& p)
+{
+	x = p.first;
+	y = p.second;
 }
 
 void TRectangle::get_params(params &p)

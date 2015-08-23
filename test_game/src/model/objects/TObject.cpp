@@ -26,6 +26,11 @@ std::vector<TShape*>& TObject::getShapes()
 	return shapes;
 }
 
+void TObject::update()
+{
+	return ;
+}
+
 
 } /* namespace game */
 

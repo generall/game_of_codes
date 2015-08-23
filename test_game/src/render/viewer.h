@@ -10,6 +10,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "../model/TWorld.h"
+#include "../model/primitives/TRectangle.h"
 
 
 namespace game
@@ -28,9 +29,10 @@ typedef enum {
 class viewer
 {
 
-	TWorld *model;
 
-	 sf::RenderWindow *window;
+protected:
+
+	TWorld *model;
 
 public:
 	viewer();

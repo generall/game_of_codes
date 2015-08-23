@@ -11,6 +11,8 @@
 #include <vector>
 #include "../primitives/TShape.h"
 
+#define RAD_TO_DEG_COEF 57.295780490442965
+
 namespace game
 {
 
@@ -25,6 +27,7 @@ public:
 	TObject();
 	virtual ~TObject();
 	virtual std::vector<TShape*>& getShapes();
+	virtual void update();
 
 };
 

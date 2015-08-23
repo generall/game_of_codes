@@ -6,6 +6,7 @@
  */
 
 #include "TShape.h"
+#include <stdexcept>
 
 namespace game
 {
@@ -24,6 +25,7 @@ TShape::~TShape()
 
 point_2d TShape::getPoint()
 {
+	throw std::runtime_error("Not implemented");
 	return std::make_pair(0,0); // default values
 }
 
@@ -39,5 +41,16 @@ void game::TShape::get_params(params &p)
 	return ; // no params
 }
 
+void game::TShape::setPoint(const point_2d &pair)
+{
+	return ;
+}
+
+void TShape::setPoint(double x, double y)
+{
+	setPoint(std::make_pair(x,y));
+}
 
 } /* namespace game */
+
+

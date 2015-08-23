@@ -12,7 +12,9 @@ namespace game
 
 TBox::TBox()
 {
-	shapes.push_back(new TRectangle());
+	rec = new TRectangle();
+	shapes.push_back(rec);
+
 }
 
 TBox::~TBox()

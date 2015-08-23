@@ -8,8 +8,10 @@
 #ifndef CONTROLLER_TCONTROLLER_H_
 #define CONTROLLER_TCONTROLLER_H_
 
-#include "../render/viewer.h"
+#include "../render/SFMLViewer.h"
 #include "../model/TWorld.h"
+#include "../model/GravityWorld.h"
+#include <unistd.h>
 
 namespace game
 {

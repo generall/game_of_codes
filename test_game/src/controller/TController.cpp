@@ -23,16 +23,19 @@ TController::~TController()
 
 void TController::start()
 {
-	view = new viewer();
+	view = new SFMLViewer();
 
-	model = new TWorld();
+	model = new GravityWorld();
 
-	model->createBox();
+	model->createUniverse();
 
 	view->init();
 	view->setModel(model);
 
-	while(view->update() != closed){};
+	while(view->update() != closed){
+		model->tick();
+		usleep(16000); // 60 fps
+	};
 
 	delete view;
 

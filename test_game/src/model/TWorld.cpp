@@ -29,9 +29,16 @@ std::vector<TObject*>& TWorld::getObjectVector()
 	return objects;
 }
 
-void TWorld::createBox()
+void TWorld::createUniverse()
 {
 	this->objects.push_back(new TBox());
 }
 
+void TWorld::tick()
+{
+	return;
+}
+
+
 } /* namespace game */
+

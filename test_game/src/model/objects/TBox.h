@@ -16,6 +16,8 @@ namespace game
 
 class TBox: public TObject
 {
+protected:
+	TRectangle *rec;
 public:
 	TBox();
 	virtual ~TBox();
