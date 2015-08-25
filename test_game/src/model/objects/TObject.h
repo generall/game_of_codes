@@ -9,7 +9,6 @@
 #define MODEL_OBJECTS_TOBJECT_H_
 
 #include <vector>
-#include "../primitives/TShape.h"
 
 #define RAD_TO_DEG_COEF 57.295780490442965
 #define PI 3.1415926
@@ -17,18 +16,27 @@
 namespace game
 {
 
+typedef enum {
+	abstract_obj,
+	box,
+	wall
+} obj_type;
+
 class TObject
 {
 
 protected:
 
-	std::vector<TShape*> shapes;
+	obj_type type;
 
 public:
 	TObject();
 	virtual ~TObject();
-	virtual std::vector<TShape*>& getShapes();
 	virtual void update();
+
+	virtual obj_type getType() const { return type; }
+
+	virtual const void* getStructure();
 
 };
 

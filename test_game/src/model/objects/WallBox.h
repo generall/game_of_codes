@@ -21,8 +21,13 @@ protected:
 	b2Body *groundBody;
 	b2PolygonShape groundBox;
 public:
-	WallBox(b2World *world);
+	WallBox(b2World *world, double width = 50, double height = 10);
 	virtual ~WallBox();
+	virtual void setPosition(double x, double y);
+
+	virtual void setAngelD(double angle);
+	virtual void setAngelR(double angle);
+	virtual void setSize(double width, double height);
 };
 
 } /* namespace game */

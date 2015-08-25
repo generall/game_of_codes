@@ -12,8 +12,8 @@ namespace game
 
 TObject::TObject()
 {
+	type = abstract_obj;
 	// TODO Auto-generated constructor stub
-
 }
 
 TObject::~TObject()
@@ -21,16 +21,16 @@ TObject::~TObject()
 	// TODO Auto-generated destructor stub
 }
 
-std::vector<TShape*>& TObject::getShapes()
-{
-	return shapes;
-}
-
 void TObject::update()
 {
 	return ;
 }
 
+const void* TObject::getStructure()
+{
+	return 0;
+}
 
 } /* namespace game */
+
 

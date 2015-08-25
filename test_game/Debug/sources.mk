@@ -26,7 +26,6 @@ SUBDIRS := \
 src/controller \
 src/model \
 src/model/objects \
-src/model/primitives \
 src/render \
 src \
 

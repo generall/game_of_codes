@@ -9,6 +9,7 @@
 #include <math.h>
 
 
+
 namespace game
 {
 
@@ -40,70 +41,32 @@ view_state SFMLViewer::update()
 			}
 		}
 
+		/*
+		 * Implementation of Z-ordering.
+		 * Add vectors ov ordering of objects to draw.
+		 */
+
 		window->clear();
 		auto object_iterator = model->getObjectVector();
 		for (auto obj : object_iterator)
 		{
-			auto shapes = obj->getShapes();
-			for (auto shape : shapes)
+			obj_type ft = obj->getType();
+			switch (ft)
 			{
-				figure_type ft = shape->getType();
-				switch (ft)
-				{
-				case rectangle:
-				{
-					TRectangle *rec = static_cast<TRectangle*>(shape);
-					point_2d point = rec->getPoint();
+			case box:
+			{
+				const BoxSt *data = (const BoxSt *)obj->getStructure();
 
-					//point.first = -point.first;
-					point.second = -point.second;
+				render_box(*data, 0);
 
-					//std::cout << "point: " << point.first << " " << point.second << std::endl;
-					sf::RectangleShape rectangle(
-							sf::Vector2f(rec->getWidth(), rec->getHight()));
-
-					double alpha = -rec->getAngle();
-
-					double alpha_deg = alpha / RAD_TO_DEG_COEF;
-
-					rectangle.setOrigin( rec->getWidth() / 2, rec->getHight() / 2 );
-
-					rectangle.setRotation(alpha);
-
-					rectangle.setPosition(point.first, point.second);
-					rectangle.setFillColor(sf::Color(0, 0, 128, 125));
-					rectangle.setOutlineThickness(-0.7);
-					rectangle.setOutlineColor(sf::Color::White);
-
-					sf::Vertex line[] =
-					{
-							sf::Vertex(sf::Vector2f(point.first, point.second)),
-							sf::Vertex(sf::Vector2f(point.first + 10 * sin(alpha_deg), point.second + 10 * cos(PI - alpha_deg)))
-					};
-
-					sf::Vertex line2[] =
-					{
-							sf::Vertex(sf::Vector2f(point.first, point.second)),
-							sf::Vertex(sf::Vector2f(point.first + 10 * cos(alpha_deg), point.second + 10 * sin(alpha_deg)))
-					};
-
-					line[0].color = sf::Color::Red;
-					line[1].color = sf::Color::Red;
-
-					line2[0].color = sf::Color::Green;
-					line2[1].color = sf::Color::Green;
-
-					window->draw(line, 2, sf::Lines);
-					window->draw(line2, 2, sf::Lines);
-
-					window->draw(rectangle);
-					break;
-				}
-				default:
-					break;
-				}
+				break;
+			}
+			default:
+				break;
 			}
 		}
+
+
 
 		if(debug)
 		{
@@ -128,6 +91,7 @@ view_state SFMLViewer::update()
 			window->draw(line2, 2, sf::Lines);
 		}
 
+		draw_layers();
 
 		window->display();
 	}
@@ -154,6 +118,88 @@ bool SFMLViewer::init()
 
 	// init of window and other render stuff here
 	return true;
+}
+
+void SFMLViewer::render_box(const BoxSt &data, int z)
+{
+	sf::RectangleShape *rectangle = new sf::RectangleShape(
+			sf::Vector2f(data.width, data.height));
+
+	double alpha = -data.angle;
+
+	double alpha_deg = alpha * RAD_TO_DEG_COEF;
+
+	double x = data.x;
+	double y = -data.y;
+
+	rectangle->setOrigin( data.width / 2, data.height / 2 );
+
+	rectangle->setRotation(alpha_deg);
+
+	rectangle->setPosition(x, y);
+	rectangle->setFillColor(sf::Color(0, 0, 128, 125));
+	rectangle->setOutlineThickness(-0.3);
+	rectangle->setOutlineColor(sf::Color::White);
+
+	sf::Vertex *line1 = new sf::Vertex[2];
+	sf::Vertex *line2 = new sf::Vertex[2];
+
+	line1[0] = sf::Vertex(sf::Vector2f(x, y));
+	line1[1] = sf::Vertex(sf::Vector2f(x + 10 * sin(alpha), y + 10 * cos(PI - alpha)));
+
+	line2[0] = sf::Vertex(sf::Vector2f(x, y));
+	line2[1] = sf::Vertex(sf::Vector2f(x + 10 * cos(alpha), y + 10 * sin(alpha)));
+
+
+	line1[0].color = sf::Color::Red;
+	line1[1].color = sf::Color::Red;
+
+	line2[0].color = sf::Color::Green;
+	line2[1].color = sf::Color::Green;
+
+	rect_layers[z].push_back(rectangle);
+	vert_layers[z + 1].push_back( make_pair(2 , line1) );
+	vert_layers[z + 1].push_back( make_pair(2 , line2) );
+
+	layers_indexes.insert(z);
+	layers_indexes.insert(z + 1);
+}
+
+void SFMLViewer::draw_layers()
+{
+	for(int z: layers_indexes)
+	{
+		for(auto x: rect_layers[z])
+		{
+			window->draw(*x);
+		}
+
+		for(auto x: vert_layers[z])
+		{
+			window->draw(x.second, x.first, sf::Lines);
+		}
+	}
+	free_layers();
+}
+
+void SFMLViewer::free_layers()
+{
+	for(int z: layers_indexes)
+	{
+		for(auto x: rect_layers[z])
+		{
+			delete x;
+		}
+
+		for(auto x: vert_layers[z])
+		{
+			delete []x.second;
+		}
+	}
+	rect_layers.clear();
+	vert_layers.clear();
+	layers_indexes.clear();
+
 }
 
 } /* namespace game */

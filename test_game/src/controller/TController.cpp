@@ -34,7 +34,7 @@ void TController::start()
 
 	while(view->update() != closed){
 		model->tick();
-		usleep(16000); // 60 fps
+		//usleep(16000); // 60 fps
 	};
 
 	delete view;

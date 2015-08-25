@@ -10,8 +10,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "../model/TWorld.h"
-#include "../model/primitives/TRectangle.h"
-
+#include "../model/objects/TBox.h"
 
 namespace game
 {
