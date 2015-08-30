@@ -8,6 +8,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "controller/TController.h"
+#include "common/JSONreader.h"
 
 using namespace game;
 using namespace std;

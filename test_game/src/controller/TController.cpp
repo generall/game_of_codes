@@ -34,6 +34,7 @@ void TController::start()
 
 	while(view->update() != closed){
 		model->tick();
+		//exit(0);
 		//usleep(16000); // 60 fps
 	};
 

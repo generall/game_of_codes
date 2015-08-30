@@ -19,7 +19,8 @@ namespace game
 typedef enum {
 	abstract_obj,
 	box,
-	wall
+	wall,
+	composed_boxes
 } obj_type;
 
 class TObject

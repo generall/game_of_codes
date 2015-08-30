@@ -11,6 +11,7 @@
 #include "TWorld.h"
 #include "objects/PhBox.h"
 #include "objects/WallBox.h"
+#include "objects/ComposedObj.h"
 #include <Box2D/Box2D.h>
 
 namespace game

@@ -62,4 +62,8 @@ Go to Kickstarter for money to rent cloud.
 * Protocol description
 
 
+# Dependensies
 
+* Box2d
+* SFML graphic library
+* JSON parser https://github.com/miloyip/rapidjson

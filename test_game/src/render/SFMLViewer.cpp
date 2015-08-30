@@ -61,6 +61,17 @@ view_state SFMLViewer::update()
 
 				break;
 			}
+			case composed_boxes:
+			{
+				const ComposedSt *data = (const ComposedSt *)obj->getStructure();
+
+				for(auto &x:data->boxes )
+				{
+					render_box(x,0);
+				}
+
+				break;
+			}
 			default:
 				break;
 			}

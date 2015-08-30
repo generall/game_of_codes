@@ -31,6 +31,8 @@ void GravityWorld::createUniverse()
 
 	objects.push_back(new WallBox(&world));
 	objects.push_back(new PhBox(&world));
+	objects.push_back(new ComposedObj(&world));
+
 
 	PhBox *barier1 = new PhBox(&world);
 	barier1->setPosition(-1.5, 10);
