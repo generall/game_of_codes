@@ -9,9 +9,7 @@
 #define MODEL_OBJECTS_TOBJECT_H_
 
 #include <vector>
-
-#define RAD_TO_DEG_COEF 57.295780490442965
-#define PI 3.1415926
+#include "common/ObjDesc.hpp"
 
 namespace game
 {

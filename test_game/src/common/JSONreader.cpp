@@ -25,7 +25,7 @@ JSONreader::JSONreader(const string &fname)
 		buffer = new char[value.size()];
 		memcpy(buffer, value.c_str(), value.size());
 		if (document.ParseInsitu(buffer).HasParseError())
-			throw std::runtime_error("Can not create document");
+			throw std::runtime_error("Can not create document: parse errors");
 	}else{
 		throw std::runtime_error("File " + fname + " not found!");
 	}

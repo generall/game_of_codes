@@ -9,15 +9,10 @@
 #define MODEL_OBJECTS_COMPOSEDOBJ_H_
 
 #include "PhBox.h"
+#include "common/TLoader.h"
 
 namespace game
 {
-
-
-struct ComposedSt
-{
-	std::vector<BoxSt> boxes;
-};
 
 
 class ComposedObj: public TObject
@@ -32,10 +27,10 @@ class ComposedObj: public TObject
 	b2PolygonShape dynamicBox, dynamicBox2; // delete later
 	b2FixtureDef fixtureDef, fixtureDef2;   // delete
 
-	std::vector<b2PolygonShape> dynamicBox_vector;
-	std::vector<b2FixtureDef> fixtureDef_vector;
+	std::vector<b2PolygonShape *> dynamicBox_vector;
+	std::vector<b2FixtureDef *> fixtureDef_vector;
 public:
-	ComposedObj(b2World *world);
+	ComposedObj(b2World *world, double x, double y, TLoader *loader);
 	virtual ~ComposedObj();
 
 	virtual void update();

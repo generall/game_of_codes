@@ -9,15 +9,11 @@
 #define MODEL_OBJECTS_TBOX_H_
 
 #include "TObject.h"
+#include "common/ObjDesc.hpp"
 
 namespace game
 {
 
-struct BoxSt
-{
-	double x, y, width, height;
-	double angle;
-};
 
 class TBox: public TObject
 {

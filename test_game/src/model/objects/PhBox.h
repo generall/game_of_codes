@@ -9,7 +9,7 @@
 #define MODEL_OBJECTS_PHBOX_H_
 
 #include "TBox.h"
-#include <Box2D/Box2D.h>
+#include "common/PhisicsIncluder.hpp"
 
 namespace game
 {

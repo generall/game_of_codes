@@ -31,7 +31,22 @@ void GravityWorld::createUniverse()
 
 	objects.push_back(new WallBox(&world));
 	objects.push_back(new PhBox(&world));
-	objects.push_back(new ComposedObj(&world));
+
+	JSONreader jReader("resources/test.json");
+
+	JSONLoader jLoader;
+
+
+	if(!jReader.document.IsObject())
+		throw std::runtime_error("Root of JSON is not an Object");
+
+	Value &v = jReader.document["objects"];
+
+	jLoader.set_source(v);
+
+	ComposedObj *co = new ComposedObj(&world, -0.5, 3, &jLoader );
+
+	objects.push_back(co);
 
 
 	PhBox *barier1 = new PhBox(&world);

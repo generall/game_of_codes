@@ -9,6 +9,7 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include src/render/subdir.mk
+-include src/model/objects/common/subdir.mk
 -include src/model/objects/subdir.mk
 -include src/model/subdir.mk
 -include src/controller/subdir.mk

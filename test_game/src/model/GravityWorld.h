@@ -12,7 +12,10 @@
 #include "objects/PhBox.h"
 #include "objects/WallBox.h"
 #include "objects/ComposedObj.h"
-#include <Box2D/Box2D.h>
+#include "objects/common/PhisicsIncluder.hpp"
+#include "objects/common/JSONLoader.h"
+#include "../common/JSONreader.h"
+
 
 namespace game
 {

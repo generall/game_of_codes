@@ -27,6 +27,7 @@ src/common \
 src/controller \
 src/model \
 src/model/objects \
+src/model/objects/common \
 src/render \
 src \
 

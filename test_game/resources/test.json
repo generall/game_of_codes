@@ -1,10 +1,42 @@
 {
-	"data": 112,
-	"data2" : "str",
-	"array" : [
-	"val1",
-	"val2",
-	"val3",
-	"val4"
+	"objects":
+	[
+		{
+			"type":"box",
+			"params":
+			{
+				"width":1.0,
+				"height":1.0,
+				"density":1.0,
+				"angle":0.0,
+				"friction":0.3
+			}
+		},
+		{
+			"type":"box",
+			"params":
+			{
+				"width":1.0,
+				"height":1.0,
+				"density":2.0,
+				"dx":0.0,
+				"dy":1.0,
+				"angle":0.0,
+				"friction":0.3
+			}
+		},
+		{
+			"type":"box",
+			"params":
+			{
+				"width":1.0,
+				"height":1.0,
+				"density":2.0,
+				"dx":0.0,
+				"dy":3.0,
+				"angle":0.0,
+				"friction":0.3
+			}
+		}
 	]
 }
