@@ -22,10 +22,14 @@ class JSONLoader: public TLoader
 public:
 	JSONLoader();
 	virtual ~JSONLoader();
-	virtual bool loadBox( b2PolygonShape *polygon, b2FixtureDef* fixture, BoxSt * box  );
+	virtual bool loadBox(  b2PolygonShape *polygon, b2FixtureDef* fixture, BoxSt * box  );
+	virtual bool loadPoly( b2PolygonShape *polygon, b2FixtureDef* fixture, PolygonSt * box  );
+
+	virtual bool dinamicBody(b2FixtureDef* fixture );
 	virtual bool loadComposed(
 			b2Body *body,
 			std::vector<b2PolygonShape *> &dynamicBox_vector,
+			std::vector<b2PolygonShape *> &dynamicPoly_vector,
 			std::vector<b2FixtureDef *> &fixtureDef_vector,
 			ComposedSt &c_data);
 	void set_source(Value & dn);

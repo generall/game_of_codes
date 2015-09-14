@@ -61,13 +61,26 @@ view_state SFMLViewer::update()
 
 				break;
 			}
+			case polygon:
+			{
+				const PolygonSt *data = (const PolygonSt *)obj->getStructure();
+
+				render_poly(*data, 0);
+
+				break;
+			}
 			case composed_boxes:
 			{
 				const ComposedSt *data = (const ComposedSt *)obj->getStructure();
 
 				for(auto &x:data->boxes )
 				{
-					render_box(x,0);
+					render_box(x, 0);
+				}
+
+				for(auto &x:data->polygons)
+				{
+					render_poly(x, 0);
 				}
 
 				break;
@@ -131,6 +144,63 @@ bool SFMLViewer::init()
 	return true;
 }
 
+void SFMLViewer::render_poly(const PolygonSt& data, int z)
+{
+	sf::ConvexShape *polygon = new sf::ConvexShape();
+
+	size_t p_count = data.points.size();
+
+	polygon->setPointCount(p_count);
+
+	for(size_t i = 0; i < p_count; i++)
+	{
+		sf::Vector2f v2(data.points[i].x, -data.points[i].y);
+		polygon->setPoint(i, v2);
+	}
+
+	double alpha = -data.angle;
+
+	double alpha_deg = alpha * RAD_TO_DEG_COEF;
+
+	double x = data.x;
+	double y = -data.y;
+
+	polygon->setRotation(alpha_deg);
+
+	polygon->setPosition(x, y);
+	polygon->setFillColor(sf::Color(0, 0, 128, 125));
+	polygon->setOutlineThickness(-0.05);
+	polygon->setOutlineColor(sf::Color::White);
+
+	/**
+	 * DEBUG LINES OF ORIENTATION
+	 */
+
+	sf::Vertex *line1 = new sf::Vertex[2];
+	sf::Vertex *line2 = new sf::Vertex[2];
+
+	line1[0] = sf::Vertex(sf::Vector2f(x, y));
+	line1[1] = sf::Vertex(sf::Vector2f(x + 10 * sin(alpha), y + 10 * cos(PI - alpha)));
+
+	line2[0] = sf::Vertex(sf::Vector2f(x, y));
+	line2[1] = sf::Vertex(sf::Vector2f(x + 10 * cos(alpha), y + 10 * sin(alpha)));
+
+
+	line1[0].color = sf::Color::Red;
+	line1[1].color = sf::Color::Red;
+
+	line2[0].color = sf::Color::Green;
+	line2[1].color = sf::Color::Green;
+
+	poly_layers[z].push_back(polygon);
+	vert_layers[z + 1].push_back( make_pair(2 , line1) );
+	vert_layers[z + 1].push_back( make_pair(2 , line2) );
+
+	layers_indexes.insert(z);
+	layers_indexes.insert(z + 1);
+
+}
+
 void SFMLViewer::render_box(const BoxSt &data, int z)
 {
 	sf::RectangleShape *rectangle = new sf::RectangleShape(
@@ -185,6 +255,11 @@ void SFMLViewer::draw_layers()
 			window->draw(*x);
 		}
 
+		for(auto x: poly_layers[z])
+		{
+			window->draw(*x);
+		}
+
 		for(auto x: vert_layers[z])
 		{
 			window->draw(x.second, x.first, sf::Lines);
@@ -208,9 +283,11 @@ void SFMLViewer::free_layers()
 		}
 	}
 	rect_layers.clear();
+	poly_layers.clear();
 	vert_layers.clear();
 	layers_indexes.clear();
-
 }
 
 } /* namespace game */
+
+

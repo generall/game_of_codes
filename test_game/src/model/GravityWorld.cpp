@@ -23,6 +23,8 @@ GravityWorld::GravityWorld() :
 
 GravityWorld::~GravityWorld()
 {
+	for(auto x:objects)
+		delete x;
 	// TODO Auto-generated destructor stub
 }
 
@@ -47,6 +49,26 @@ void GravityWorld::createUniverse()
 	ComposedObj *co = new ComposedObj(&world, -0.5, 3, &jLoader );
 
 	objects.push_back(co);
+
+
+
+	std::vector<Point2D> poly_points;
+
+	poly_points.push_back(Point2D(-2, -2));
+	poly_points.push_back(Point2D(-3,  1));
+	poly_points.push_back(Point2D( 0,  3));
+	poly_points.push_back(Point2D( 3,  1));
+	poly_points.push_back(Point2D( 2, -2));
+
+
+
+	PhPolygon *poly = new PhPolygon(&world, poly_points);
+	poly->setPosition(2, 15);
+
+
+	objects.push_back(poly);
+
+
 
 
 	PhBox *barier1 = new PhBox(&world);

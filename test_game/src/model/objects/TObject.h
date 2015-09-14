@@ -18,7 +18,8 @@ typedef enum {
 	abstract_obj,
 	box,
 	wall,
-	composed_boxes
+	composed_boxes,
+	polygon
 } obj_type;
 
 class TObject

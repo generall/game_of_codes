@@ -10,6 +10,7 @@
 
 #include "TWorld.h"
 #include "objects/PhBox.h"
+#include "objects/PhPolygon.h"
 #include "objects/WallBox.h"
 #include "objects/ComposedObj.h"
 #include "objects/common/PhisicsIncluder.hpp"

@@ -11,6 +11,7 @@
 #include <SFML/Graphics.hpp>
 #include "../model/TWorld.h"
 #include "../model/objects/TBox.h"
+#include "../model/objects/TPolygon.h"
 #include "../model/GravityWorld.h"
 
 namespace game

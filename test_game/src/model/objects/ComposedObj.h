@@ -23,12 +23,9 @@ class ComposedObj: public TObject
 	b2BodyDef bodyDef;
 	b2Body *body;
 
-	/* FOR TEST */
-	b2PolygonShape dynamicBox, dynamicBox2; // delete later
-	b2FixtureDef fixtureDef, fixtureDef2;   // delete
-
 	std::vector<b2PolygonShape *> dynamicBox_vector;
 	std::vector<b2FixtureDef *> fixtureDef_vector;
+	std::vector<b2PolygonShape *> dynamicPoly_vector;
 public:
 	ComposedObj(b2World *world, double x, double y, TLoader *loader);
 	virtual ~ComposedObj();

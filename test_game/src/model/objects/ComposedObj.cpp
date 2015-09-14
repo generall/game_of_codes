@@ -20,7 +20,7 @@ ComposedObj::ComposedObj(b2World *world, double x, double y, TLoader *loader)
 	bodyDef.position.Set(x, y );
 	body = world->CreateBody(&bodyDef);
 
-	if(!loader->loadComposed(body, dynamicBox_vector, fixtureDef_vector, c_data))
+	if(!loader->loadComposed(body, dynamicBox_vector, dynamicPoly_vector, fixtureDef_vector, c_data))
 		throw std::runtime_error("Fail on loading ComposedObj!");
 
 	// Define another box shape for our dynamic body.
@@ -37,7 +37,9 @@ ComposedObj::~ComposedObj()
 	for(auto x: dynamicBox_vector)
 		if(x != NULL)
 			delete x;
-	// TODO Auto-generated destructor stub
+	for(auto x: dynamicPoly_vector)
+		if(x != NULL)
+			delete x;
 }
 
 void ComposedObj::update()
@@ -52,6 +54,16 @@ void ComposedObj::update()
 		c_data.boxes[i].y = pos1.y;
 		c_data.boxes[i].angle = body->GetAngle() + c_data.boxes[i].d_angle;
 	}
+
+	for(size_t i = 0, sz = c_data.polygons.size(); i < sz; i++ )
+	{
+		b2Vec2 pos1 = dynamicPoly_vector[i]->m_centroid;
+		pos1 = b2Mul(tr, pos1);
+		c_data.polygons[i].x = pos1.x;
+		c_data.polygons[i].y = pos1.y;
+		c_data.polygons[i].angle = body->GetAngle() + c_data.polygons[i].d_angle;
+	}
+
 }
 
 const void* ComposedObj::getStructure()

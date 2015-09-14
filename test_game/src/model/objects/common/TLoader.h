@@ -24,6 +24,7 @@ public:
 	virtual bool loadComposed(
 			b2Body *body,
 			std::vector<b2PolygonShape *> &dynamicBox_vector,
+			std::vector<b2PolygonShape *> &dynamicPoly_vector,
 			std::vector<b2FixtureDef *> &fixtureDef_vector,
 			ComposedSt &c_data);
 };

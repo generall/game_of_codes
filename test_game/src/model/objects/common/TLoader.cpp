@@ -31,6 +31,7 @@ bool game::TLoader::loadBox(b2PolygonShape* polygon, b2FixtureDef* fixture,
 
 bool game::TLoader::loadComposed(b2Body* body,
 		std::vector<b2PolygonShape*>& dynamicBox_vector,
+		std::vector<b2PolygonShape*>& dynamicPoly_vector,
 		std::vector<b2FixtureDef*>& fixtureDef_vector, ComposedSt& c_data)
 {
 	return false; // fail everytime

@@ -27,6 +27,7 @@ protected:
 	set<int> layers_indexes;
 
 	map<int, vector<sf::RectangleShape *> > rect_layers;
+	map<int, vector<sf::ConvexShape *> > poly_layers;
 	map<int, vector< pair<size_t, sf::Vertex *> > > vert_layers;
 
 public:
@@ -41,6 +42,7 @@ private:
 	 * @param z - index of layer
 	 */
 	void render_box(const BoxSt &data, int z = 0);
+	void render_poly(const PolygonSt &data, int z = 0);
 	void draw_layers();
 	void free_layers();
 
