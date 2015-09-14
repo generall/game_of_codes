@@ -46,7 +46,7 @@ void GravityWorld::createUniverse()
 
 	jLoader.set_source(v);
 
-	ComposedObj *co = new ComposedObj(&world, -0.5, 3, &jLoader );
+	ComposedObj *co = new ComposedObj(&world, -2, 5, &jLoader );
 
 	objects.push_back(co);
 

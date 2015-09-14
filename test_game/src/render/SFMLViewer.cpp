@@ -165,6 +165,8 @@ void SFMLViewer::render_poly(const PolygonSt& data, int z)
 	double x = data.x;
 	double y = -data.y;
 
+	//polygon->setOrigin( x, y );
+
 	polygon->setRotation(alpha_deg);
 
 	polygon->setPosition(x, y);
@@ -180,10 +182,10 @@ void SFMLViewer::render_poly(const PolygonSt& data, int z)
 	sf::Vertex *line2 = new sf::Vertex[2];
 
 	line1[0] = sf::Vertex(sf::Vector2f(x, y));
-	line1[1] = sf::Vertex(sf::Vector2f(x + 10 * sin(alpha), y + 10 * cos(PI - alpha)));
+	line1[1] = sf::Vertex(sf::Vector2f(x + 4 * sin(alpha), y + 4 * cos(PI - alpha)));
 
 	line2[0] = sf::Vertex(sf::Vector2f(x, y));
-	line2[1] = sf::Vertex(sf::Vector2f(x + 10 * cos(alpha), y + 10 * sin(alpha)));
+	line2[1] = sf::Vertex(sf::Vector2f(x + 4 * cos(alpha), y + 4 * sin(alpha)));
 
 
 	line1[0].color = sf::Color::Red;
@@ -226,10 +228,10 @@ void SFMLViewer::render_box(const BoxSt &data, int z)
 	sf::Vertex *line2 = new sf::Vertex[2];
 
 	line1[0] = sf::Vertex(sf::Vector2f(x, y));
-	line1[1] = sf::Vertex(sf::Vector2f(x + 10 * sin(alpha), y + 10 * cos(PI - alpha)));
+	line1[1] = sf::Vertex(sf::Vector2f(x + 3 * sin(alpha), y + 3 * cos(PI - alpha)));
 
 	line2[0] = sf::Vertex(sf::Vector2f(x, y));
-	line2[1] = sf::Vertex(sf::Vector2f(x + 10 * cos(alpha), y + 10 * sin(alpha)));
+	line2[1] = sf::Vertex(sf::Vector2f(x + 3 * cos(alpha), y + 3 * sin(alpha)));
 
 
 	line1[0].color = sf::Color::Red;

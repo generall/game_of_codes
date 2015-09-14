@@ -57,11 +57,12 @@ void ComposedObj::update()
 
 	for(size_t i = 0, sz = c_data.polygons.size(); i < sz; i++ )
 	{
-		b2Vec2 pos1 = dynamicPoly_vector[i]->m_centroid;
-		pos1 = b2Mul(tr, pos1);
+		b2Vec2 pos1;// = dynamicPoly_vector[i]->m_centroid;
+		//pos1 = b2Mul(tr, pos1);
+		pos1 = body->GetPosition();
 		c_data.polygons[i].x = pos1.x;
 		c_data.polygons[i].y = pos1.y;
-		c_data.polygons[i].angle = body->GetAngle() + c_data.polygons[i].d_angle;
+		c_data.polygons[i].angle = body->GetAngle();
 	}
 
 }

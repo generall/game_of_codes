@@ -219,8 +219,8 @@ bool JSONLoader::loadPoly(b2PolygonShape* polygon, b2FixtureDef* fixture,
 				{
 					Value &p = data_node["points"][i];
 					poly_points.push_back(
-							Point2D(p[0].GetDouble(),
-									p[1].GetDouble()));
+							Point2D(p[0].GetDouble() + data->x,
+									p[1].GetDouble() + data->y));
 				}
 				b2Vec2 *vertices = new b2Vec2[poly_points.size()];
 				/*
@@ -231,14 +231,17 @@ bool JSONLoader::loadPoly(b2PolygonShape* polygon, b2FixtureDef* fixture,
 
 				for (Point2D pt : poly_points)
 				{
-					curr->x = pt.x + data->x;
-					curr->y = pt.y + data->y;
+					curr->x = pt.x;
+					curr->y = pt.y;
 					curr++;
 				}
 
 				data->points = poly_points;
 
 				polygon->Set(vertices, poly_points.size());
+
+				data->x = 0;
+				data->y = 0;
 
 			} catch (...)
 			{
@@ -264,6 +267,7 @@ bool JSONLoader::loadPoly(b2PolygonShape* polygon, b2FixtureDef* fixture,
 	}
 
 	fixture->shape = polygon;
+
 
 	return true;
 }
